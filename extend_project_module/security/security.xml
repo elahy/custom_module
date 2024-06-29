@@ -1,0 +1,13 @@
+<odoo>
+    <data >
+
+        <!-- Record Rule: Project visibility restricted to team members -->
+        <record id="project_team_visibility_rule" model="ir.rule">
+            <field name="name">Project: Visible to Team Members</field>
+            <field name="model_id" ref="model_project_project"/>
+            <field name="domain_force">[('team_id.member_ids', 'in', user.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+
+        <record id="view_project_team_tree" model="ir.ui.view">
+            <field name="name">project.team.tree</field>
+            <field name="model">project.team</field>
+            <field name="arch" type="xml">
+                <tree string="Project Teams">
+                    <field name="name"/>
+                    <field name="member_ids"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_project_team_form" model="ir.ui.view">
+            <field name="name">project.team.form</field>
+            <field name="model">project.team</field>
+            <field name="arch" type="xml">
+                <form string="Project Team">
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="member_ids" widget="many2many_tags"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_project_team" model="ir.actions.act_window">
+            <field name="name">Project Teams</field>
+            <field name="res_model">project.team</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new project team
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_project_team" name="Project Teams" parent="project.menu_project_config"
+                  action="action_project_team"/>
+
+
+    </data>
+</odoo>
